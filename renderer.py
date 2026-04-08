@@ -40,7 +40,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 <main>
 {cards}
 </main>
-<footer>PBSA News Digest &middot; Powered by Google Gemini</footer>
+<footer>PBSA News Digest &middot; Powered by DeepSeek</footer>
 </body>
 </html>"""
 
