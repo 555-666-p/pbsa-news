@@ -13,7 +13,7 @@ A daily-refreshing news aggregator for PBSA (Purpose Built Student Accommodation
 GitHub Actions (daily cron, 7am)
   → scraper.py — fetches articles from configured sources
   → summariser.py — calls Gemini API for 1–2 sentence summaries
-  → renderer.py — generates static index.html
+  → scraper.py appends new articles to data/articles.json (deduped by URL)\n  → summariser.py — calls Gemini API for 1–2 sentence summaries\n  → renderer.py — generates static index.html from full archive
   → GitHub Pages — hosts the output
   → SharePoint Online Embed web part — colleagues access via iframe
 ```
