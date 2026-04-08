@@ -78,7 +78,7 @@ A daily HTML email sent via Brevo to a configured recipient list. Contains only 
 - **Auth:** Brevo API key stored as a GitHub Actions secret (`BREVO_API_KEY`)
 - **Recipients:** Defined in `sources.py` config alongside the news sources
 - **Send time:** Immediately after the daily scrape completes (~7am)
-- **Fallback:** If no new articles are found, no email is sent
+- **No new articles:** Email is still sent with a "no new articles today" message
 
 ## SharePoint Integration
 
@@ -100,7 +100,7 @@ The GitHub Pages URL is embedded in a SharePoint Online modern page using the bu
 | Gemini API failure on an article | First ~200 chars of article body used as fallback summary |
 | Gemini API fully down | Run completes with all fallback summaries; logged as warning |
 | Brevo API failure | Email send is skipped; logged as warning; web and RSS output unaffected |
-| No new articles found | RSS and web updated normally; no email sent |
+| No new articles found | RSS and web updated normally; email sent with "no new articles today" message |
 
 ## Tech Stack
 
