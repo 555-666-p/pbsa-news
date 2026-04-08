@@ -13,7 +13,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(mess
 
 
 def run():
-    gemini_key = os.environ["GEMINI_API_KEY"]
+    deepseek_key = os.environ["DEEPSEEK_API_KEY"]
     brevo_key = os.environ["BREVO_API_KEY"]
     today = date.today().isoformat()
 
@@ -35,7 +35,7 @@ def run():
 
     for article in new_articles:
         logging.info("Summarising: %s", article["headline"])
-        summarise_article(article, api_key=gemini_key)
+        summarise_article(article, api_key=deepseek_key)
 
     save_store(merged)
     logging.info("Store saved (%d total articles)", len(merged))
