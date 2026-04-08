@@ -54,7 +54,9 @@ Card feed layout. Each card contains:
 | Headline | Bold, linked to original article, opens in new tab |
 | AI summary | 1–2 sentences, Gemini-generated |
 
-Cards are stacked vertically, full width, with a light background. Clean, minimal styling — readable at a glance.\n\nThe page shows the current day\'s scrape only — a fresh snapshot each run, not an accumulating archive. Articles are ordered newest-first within each run.
+Cards are stacked vertically, full width, with a light background. Clean, minimal styling — readable at a glance.
+
+The page shows all articles ever scraped, newest-first — an accumulating archive. Each daily run appends newly discovered articles (deduplicated by URL) to the archive.
 
 ## SharePoint Integration
 
