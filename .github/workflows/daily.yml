@@ -1,0 +1,44 @@
+name: Daily PBSA News Digest
+
+on:
+  schedule:
+    - cron: "0 7 * * *"   # 7am UTC daily
+  workflow_dispatch:        # allow manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pipeline
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+        run: python main.py
+
+      - name: Commit updated article store
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/articles.json
+          git diff --cached --quiet || git commit -m "chore: update article store [skip ci]"
+          git push
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
