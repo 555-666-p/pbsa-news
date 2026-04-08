@@ -102,7 +102,7 @@ def render_rss(articles: list, output_path: Path = Path("output/feed.xml")) -> N
     rss = ET.Element("rss", version="2.0")
     channel = ET.SubElement(rss, "channel")
     ET.SubElement(channel, "title").text = "PBSA News Digest"
-    ET.SubElement(channel, "link").text = "https://YOUR_GITHUB_USERNAME.github.io/pbsa-news/"
+    ET.SubElement(channel, "link").text = "https://555-666-p.github.io/pbsa-news/"
     ET.SubElement(channel, "description").text = "Daily PBSA industry news with AI summaries"
 
     for a in sorted_articles:
